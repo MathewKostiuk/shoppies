@@ -1,3 +1,5 @@
+import styles from './SearchResult.module.css';
+
 export default function SearchResult(props) {
   const { movie, setNominations, nominations } = props;
 
@@ -12,9 +14,10 @@ export default function SearchResult(props) {
   }
 
   return (
-    <li>
-      <span>{movie.Title} ({movie.Year})</span>
-      <button type='button' disabled={shouldBeDisabled()} onClick={handleClick}>Nominate</button>
+    <li className={styles.result}>
+      <img className={styles.image} src={movie.Poster} />
+      <h3 className={styles.title} >{movie.Title} ({movie.Year})</h3>
+      <button className={styles.button} type='button' disabled={shouldBeDisabled()} onClick={handleClick}>Nominate</button>
     </li>
   );
 }

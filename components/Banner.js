@@ -1,8 +1,13 @@
+import styles from './Banner.module.css';
 
-
-export default function Banner() {
+export default function Banner(props) {
+  const { shouldDisplay } = props;
 
   return (
-    <div>Thank you for your nominations!</div>
-  )
+    <section className={styles.banner}>
+      {shouldDisplay && (
+        <div>Thanks!</div>
+      )}
+    </section>
+  );
 }

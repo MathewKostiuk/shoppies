@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react';
 import useDebounce from '../hooks/use-debounce';
+import styles from './SearchForm.module.css';
 
 import SearchResultsList from './SearchResultsList';
 
@@ -14,18 +15,9 @@ const fetcher = async (url) => {
 }
 
 export default function SearchForm(props) {
-  const { nominations, setNominations } = props;
+  const { setSearchResults } = props;
   const [query, setQuery] = useState('');
-  const [results, setResults] = useState([]);
   const debouncedQuery = useDebounce(query, 500);
-
-  const resultsList = results && results[0] && (
-    <SearchResultsList
-      movies={results}
-      setNominations={setNominations}
-      nominations={nominations}
-    />
-  );
 
   const handleChange = (event) => {
     setQuery(event.target.value)
@@ -38,16 +30,15 @@ export default function SearchForm(props) {
   useEffect(() => {
     const uri = `api/movies?title=${debouncedQuery}`;
     fetcher(uri)
-      .then(data => setResults(data.Search));
+      .then(data => setSearchResults(data.Search));
   }, [debouncedQuery]);
 
   return (
     <>
-      <form onSubmit={handleSubmit}>
-        <label>Movie title:</label>
+      <form className={styles.form} onSubmit={handleSubmit}>
+        <label>Movie title</label>
         <input type='text' value={query} onChange={handleChange} />
       </form>
-      {resultsList}
     </>
   );
 }

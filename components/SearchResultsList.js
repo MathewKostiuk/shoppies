@@ -1,9 +1,10 @@
 import SearchResult from './SearchResult';
+import styles from './SearchResultsList.module.css';
 
 export default function SearchResultsList(props) {
-  const { movies, setNominations, nominations } = props;
+  const { results, setNominations, nominations } = props;
 
-  const list = movies.map((movie, index) => {
+  const list = results.map((movie, index) => {
     return <SearchResult
       movie={movie}
       setNominations={setNominations}
@@ -13,7 +14,7 @@ export default function SearchResultsList(props) {
   });
 
   return (
-    <ul>
+    <ul className={styles.list}>
       {list}
     </ul>
   );
