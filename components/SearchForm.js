@@ -16,9 +16,11 @@ export default function SearchForm() {
   const debouncedQuery = useDebounce(query, 500);
 
   useEffect(() => {
-    fetcher(`api/movies`)
+    const uri = `api/movies?title=${debouncedQuery}`;
+    if (debouncedQuery !== '') {
+      fetcher(uri)
       .then(data => console.log(data));
-    console.log(debouncedQuery);
+    }
   }, [debouncedQuery]);
 
   return (
