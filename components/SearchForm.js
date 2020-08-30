@@ -25,7 +25,15 @@ export default function SearchForm(props) {
       setNominations={setNominations}
       nominations={nominations}
     />
-  )
+  );
+
+  const handleChange = (event) => {
+    setQuery(event.target.value)
+  }
+
+  const handleSubmit = (event) => {
+    event.preventDefault();
+  }
 
   useEffect(() => {
     const uri = `api/movies?title=${debouncedQuery}`;
@@ -35,9 +43,9 @@ export default function SearchForm(props) {
 
   return (
     <>
-      <form>
+      <form onSubmit={handleSubmit}>
         <label>Movie title:</label>
-        <input type='text' value={query} onChange={event => setQuery(event.target.value)} />
+        <input type='text' value={query} onChange={handleChange} />
       </form>
       {resultsList}
     </>
