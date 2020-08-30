@@ -1,5 +1,5 @@
-import useSWR from 'swr';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
+import useDebounce from '../hooks/use-debounce';
 
 const fetcher = async (url) => {
   const response = await fetch(url);
@@ -13,8 +13,14 @@ const fetcher = async (url) => {
 
 export default function SearchForm() {
   const [query, setQuery] = useState('');
-  const { data, error } = useSWR(`api/movies`, fetcher);
-  
+  const debouncedQuery = useDebounce(query, 500);
+
+  useEffect(() => {
+    fetcher(`api/movies`)
+      .then(data => console.log(data));
+    console.log(debouncedQuery);
+  }, [debouncedQuery]);
+
   return (
     <form>
       <label>Movie title:</label>
