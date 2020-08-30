@@ -10,25 +10,6 @@ export default function Home() {
   const [searchResults, setSearchResults] = useState([]);
   const [nominations, setNominations] = useState([]);
 
-  const searchResultsList = searchResults && searchResults[0] && (
-    <SearchResultsList
-      results={searchResults}
-      setNominations={setNominations}
-      nominations={nominations}
-    />
-  );
-
-  const nominationsList = nominations && nominations.length > 0 && (
-    <NominationsList
-      nominations={nominations}
-      setNominations={setNominations}
-    />
-  );
-
-  const banner = nominations && nominations.length === 5 && (
-    <Banner />
-  );
-
   return (
     <div className={styles.container}>
       <Head>
@@ -38,8 +19,15 @@ export default function Home() {
       <Banner shouldDisplay={nominations.length === 5} />
       <Header setSearchResults={setSearchResults} />
       <main className={styles.grid}>
-        {searchResultsList}
-        {nominationsList}
+        <SearchResultsList
+          results={searchResults}
+          setNominations={setNominations}
+          nominations={nominations}
+        />
+        <NominationsList
+          nominations={nominations}
+          setNominations={setNominations}
+        />
       </main>
     </div>
   );

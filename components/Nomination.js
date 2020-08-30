@@ -1,3 +1,5 @@
+import styles from './Nomination.module.css';
+
 export default function Nomination(props) {
   const { nomination, setNominations } = props;
 
@@ -8,12 +10,12 @@ export default function Nomination(props) {
   }
 
   return (
-    <li>
+    <li className={styles.nomination}>
       <span>
         {nomination.Title} ({nomination.Year})
       </span>
-      <button type='button' onClick={handleClick}>
-        Remove
+      <button className={styles.button} type='button' onClick={handleClick}>
+        X
       </button>
     </li>
   )

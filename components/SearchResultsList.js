@@ -4,7 +4,7 @@ import styles from './SearchResultsList.module.css';
 export default function SearchResultsList(props) {
   const { results, setNominations, nominations } = props;
 
-  const list = results.map((movie, index) => {
+  const list = results && results[0] && results.map((movie, index) => {
     return <SearchResult
       movie={movie}
       setNominations={setNominations}
