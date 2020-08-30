@@ -3,6 +3,7 @@ import styles from '../styles/Home.module.css'
 import { useState } from 'react';
 import SearchForm from '../components/SearchForm';
 import NominationsList from '../components/NominationsList';
+import Banner from '../components/Banner';
 
 export default function Home() {
   const [nominations, setNominations] = useState([]);
@@ -12,7 +13,11 @@ export default function Home() {
       nominations={nominations}
       setNominations={setNominations}
     />
-  )
+  );
+
+  const banner = nominations && nominations.length === 5 && (
+    <Banner />
+  );
 
   return (
     <div className={styles.container}>
@@ -20,6 +25,7 @@ export default function Home() {
         <title>Create Next App</title>
         <link rel="icon" href="/favicon.ico" />
       </Head>
+      {banner}
       <SearchForm nominations={nominations} setNominations={setNominations} />
       {nominationsList}
     </div>
