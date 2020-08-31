@@ -10,14 +10,18 @@ export default function SearchResult(props) {
   const shouldBeDisabled = () => {
     const exists = nominations.filter(item => item.imdbID === movie.imdbID);
     const limitReached = nominations.length === 5;
-    return limitReached || exists.length > 0 ? true : false;
+    if (limitReached || exists.length > 0) {
+      return styles.disabled;
+    } else {
+      return '';
+    }
   }
 
   return (
-    <li className={styles.result}>
+    <li className={`${styles.result} ${shouldBeDisabled()}`}>
       <img className={styles.image} src={movie.Poster} />
       <h3 className={styles.title} >{movie.Title} ({movie.Year})</h3>
-      <button className={styles.button} type='button' disabled={shouldBeDisabled()} onClick={handleClick}>Nominate</button>
+      <button className={styles.button} type='button' onClick={handleClick}>Nominate</button>
     </li>
   );
 }
