@@ -13,7 +13,7 @@ export default function NominationsList(props) {
   })
 
   return (
-    <section>
+    <section className={styles.container}>
       <h2 className={styles.title}>Nominations</h2>
       <ul className={styles.list}>
         {list}
