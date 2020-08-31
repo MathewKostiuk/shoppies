@@ -1,6 +1,7 @@
 .banner {
   position: sticky;
   top: 0;
+  background-color: #79D872;
   height: 50px;
   display: flex;
   align-items: center;

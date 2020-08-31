@@ -6,7 +6,7 @@ export default function Banner(props) {
   return (
     <section className={styles.banner}>
       {shouldDisplay && (
-        <div>Thanks!</div>
+        <div>Thank you for your submissions!</div>
       )}
     </section>
   );
