@@ -36,12 +36,11 @@ export default function SearchForm(props) {
   return (
     <>
       <form className={styles.form} onSubmit={handleSubmit}>
-        <label>Movie title</label>
         <div className={styles.horizontal}>
           <svg className={styles.icon} aria-hidden="true" focusable="false" role="presentation" xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 18 18" fill="none">
             <title>Search icon</title>
-            <path d="M19.5 21.5L13.6155 15.1628" stroke="currentColor" stroke-width="1.75" />
-            <circle cx="9.5" cy="9.5" r="7" stroke="currentColor" stroke-width="1.75" />
+            <path d="M19.5 21.5L13.6155 15.1628" stroke="currentColor" strokeWidth="1.75" />
+            <circle cx="9.5" cy="9.5" r="7" stroke="currentColor" strokeWidth="1.75" />
           </svg>
           <input className={styles.input} type='text' value={query} onChange={handleChange} placeholder='Search by movie title' />
         </div>
