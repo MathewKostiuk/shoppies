@@ -1,5 +1,7 @@
 import { useState, useEffect } from 'react';
 import useDebounce from '../hooks/use-debounce';
+import { TextField } from '@material-ui/core';
+import { Search } from '@material-ui/icons';
 import styles from './SearchForm.module.css';
 
 const fetcher = async (url) => {
@@ -29,29 +31,38 @@ export default function SearchForm(props) {
   useEffect(() => {
     const uri = `api/movies?title=${debouncedQuery}`;
     const cachedResults = localStorage.getItem(debouncedQuery);
-    
+
     if (cachedResults && debouncedQuery) {
       setSearchResults(JSON.parse(cachedResults));
     } else {
       fetcher(uri)
-      .then(data => {
-        setSearchResults(data.Search);
-        localStorage.setItem(debouncedQuery, JSON.stringify(data.Search));
-        setQueryCache({ ...queryCache, debouncedQuery: data.Search });
-      });
+        .then(data => {
+          setSearchResults(data.Search);
+          localStorage.setItem(debouncedQuery, JSON.stringify(data.Search));
+          setQueryCache({ ...queryCache, debouncedQuery: data.Search });
+        });
     }
   }, [debouncedQuery]);
 
   return (
-    <form className={styles.form} onSubmit={handleSubmit}>
-      <div className={styles.horizontal}>
-        <svg className={styles.icon} aria-hidden="true" focusable="false" role="presentation" xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 18 18" fill="none">
-          <title>Search icon</title>
-          <path d="M19.5 21.5L13.6155 15.1628" stroke="currentColor" strokeWidth="1.75" />
-          <circle cx="9.5" cy="9.5" r="7" stroke="currentColor" strokeWidth="1.75" />
-        </svg>
-        <input className={styles.input} type='text' value={query} onChange={handleChange} placeholder='Search by movie title' />
+    <form
+      className={styles.root}
+      onSubmit={handleSubmit}
+    >
+      <div className={styles.icon}>
+        <Search
+          fontSize="large" />
       </div>
+
+      <TextField
+        classes={{
+          root: styles.input,
+        }}
+        type='search'
+        value={query}
+        onChange={handleChange}
+        placeholder='Search by movie title'
+      />
     </form>
   );
 }

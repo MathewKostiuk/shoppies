@@ -1,13 +1,22 @@
-import styles from './Header.module.css';
 import SearchForm from '../components/SearchForm';
+import styles from './Header.module.css';
+import {
+  AppBar,
+  Toolbar,
+  Typography,
+} from '@material-ui/core'
 
 export default function Header(props) {
   const { setSearchResults } = props;
 
   return (
-    <header className={styles.header}>
-      <h1 className={styles.title}>The Shoppies Nominations</h1>
-      <SearchForm setSearchResults={setSearchResults} />
-    </header>
+    <AppBar position="fixed">
+      <Toolbar>
+        <Typography className={styles.title} variant='h4'>
+          Shoppies
+        </Typography>
+        <SearchForm setSearchResults={setSearchResults} />
+      </Toolbar>
+    </AppBar>
   );
 }

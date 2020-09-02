@@ -1,4 +1,10 @@
 import Nomination from './Nomination';
+import {
+  List,
+  Typography,
+  Drawer,
+  Divider,
+} from '@material-ui/core';
 import styles from './NominationsList.module.css';
 
 export default function NominationsList(props) {
@@ -13,11 +19,22 @@ export default function NominationsList(props) {
   })
 
   return (
-    <section className={styles.container}>
-      <h2 className={styles.title}>Nominations</h2>
-      <ul className={styles.list}>
+    <Drawer
+      variant='permanent'
+      anchor='right'
+      classes={{
+        paper: styles.drawer,
+      }}
+    >
+      <Divider />
+      <Typography
+      variant='h4'
+      align='center'>
+        Nominations
+      </Typography>
+      <List>
         {list}
-      </ul>
-    </section>
-  )
+      </List>
+    </Drawer>
+  );
 }

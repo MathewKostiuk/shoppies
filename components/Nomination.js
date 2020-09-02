@@ -1,4 +1,15 @@
-import styles from './Nomination.module.css';
+import {
+  ListItem,
+  ListItemAvatar,
+  Avatar,
+  ListItemText,
+  ListItemSecondaryAction,
+  IconButton,
+} from '@material-ui/core';
+
+import {
+  Delete,
+} from '@material-ui/icons';
 
 export default function Nomination(props) {
   const { nomination, setNominations } = props;
@@ -10,17 +21,18 @@ export default function Nomination(props) {
   }
 
   return (
-    <li className={styles.nomination}>
-      <span>
-        {nomination.Title} ({nomination.Year})
-      </span>
-      <button className={styles.button} type='button' onClick={handleClick}>
-        <svg aria-hidden="true" focusable="false" role="presentation" xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 18 18" fill="none">
-          <title>Close icon</title>
-          <path d="M17 1L1 17" stroke="currentColor" strokeWidth="1.75" strokeLinejoin="round" />
-          <path d="M1 1L17 17" stroke="currentColor" strokeWidth="1.75" strokeLinejoin="round" />
-        </svg>
-      </button>
-    </li>
-  )
+    <ListItem>
+      <ListItemAvatar>
+        <Avatar alt={nomination.Title} src={nomination.Poster} />
+      </ListItemAvatar>
+      <ListItemText 
+        primary={nomination.Title}
+      />
+      <ListItemSecondaryAction>
+        <IconButton edge='end' aria-label='delete' onClick={handleClick}>
+          <Delete />
+        </IconButton>
+      </ListItemSecondaryAction>
+    </ListItem>
+  );
 }

@@ -1,12 +1,4 @@
-.container {
-  padding: 0 2em;
-}
-
-.title {
-  text-align: center;
-}
-
-.list {
-  list-style: none;
-  padding-left: 0;
+.drawer {
+  width: 300px;
+  margin-top: 64px;
 }

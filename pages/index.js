@@ -22,24 +22,24 @@ export default function Home() {
   }, [nominations]);
 
   return (
-    <div className={styles.container}>
+    <div>
       <Head>
         <title>The Shoppies</title>
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <Banner shouldDisplay={nominations.length === 5} />
+      {/* <Banner shouldDisplay={nominations.length === 5} /> */}
       <Header setSearchResults={setSearchResults} />
-      <main className={styles.grid}>
+      <main className={styles.root}>
         <SearchResultsList
           results={searchResults}
           setNominations={setNominations}
           nominations={nominations}
         />
-        <NominationsList
-          nominations={nominations}
-          setNominations={setNominations}
-        />
       </main>
+      <NominationsList
+        nominations={nominations}
+        setNominations={setNominations}
+      />
     </div>
   );
 }

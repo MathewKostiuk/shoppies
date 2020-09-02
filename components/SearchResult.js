@@ -1,4 +1,14 @@
 import styles from './SearchResult.module.css';
+import {
+  Card,
+  CardActionArea,
+  CardActions,
+  CardMedia,
+  CardContent,
+  Grid,
+  Typography,
+  Button,
+} from '@material-ui/core';
 
 export default function SearchResult(props) {
   const { movie, setNominations, nominations } = props;
@@ -18,10 +28,29 @@ export default function SearchResult(props) {
   }
 
   return (
-    <li className={`${styles.result} ${shouldBeDisabled()}`}>
-      <img className={styles.image} src={movie.Poster} />
-      <h3 className={styles.title} >{movie.Title} ({movie.Year})</h3>
-      <button className={styles.button} type='button' onClick={handleClick}>Nominate</button>
-    </li>
+    <Grid item xs={6} lg={3}>
+      <Card className={`${shouldBeDisabled()} ${styles.card}`} >
+        <CardActionArea>
+          <CardMedia
+            className={styles.image}
+            image={movie.Poster}
+            title="Contemplative Reptile"
+          />
+          <CardContent>
+            <Typography gutterBottom variant="h5" component="h2">
+              {movie.Title}
+            </Typography>
+            <Typography variant="body2" color="textSecondary" component="p">
+              {movie.Year}
+            </Typography>
+          </CardContent>
+        </CardActionArea>
+        <CardActions>
+          <Button size="small" variant="outlined" color="primary" onClick={handleClick} fullWidth="true">
+            Nominate
+        </Button>
+        </CardActions>
+      </Card>
+    </Grid>
   );
 }

@@ -1,5 +1,8 @@
 import SearchResult from './SearchResult';
 import styles from './SearchResultsList.module.css';
+import {
+  Grid,
+} from '@material-ui/core';
 
 export default function SearchResultsList(props) {
   const { results, setNominations, nominations } = props;
@@ -14,8 +17,14 @@ export default function SearchResultsList(props) {
   });
 
   return (
-    <ul className={styles.list}>
+    <Grid container
+    className={styles.grid}
+    spacing={3}
+    classes={{
+      container: styles.container,
+    }}
+    >
       {list}
-    </ul>
+    </Grid>
   );
 }

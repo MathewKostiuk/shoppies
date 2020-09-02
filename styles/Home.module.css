@@ -1,9 +1,4 @@
-.container {
-  min-height: 100vh;
-}
-
-.grid {
-  display: grid;
-  grid-template-columns: 3fr 1fr;
-  grid-template-rows: auto;
+.root {
+  margin-top: 64px;
+  margin-right: 300px;
 }

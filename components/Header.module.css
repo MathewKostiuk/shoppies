@@ -1,10 +1,9 @@
-.header {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  margin: 2em;
+.title {
+  flex-grow: 1;
 }
 
-.title {
-  font-size: 1.5em;
+@media(max-width: 720px) {
+  .title {
+    display: none;
+  }
 }
