@@ -15,6 +15,7 @@ const fetcher = async (url) => {
 export default function SearchForm(props) {
   const { setSearchResults } = props;
   const [query, setQuery] = useState('');
+  const [queryCache, setQueryCache] = useState({});
   const debouncedQuery = useDebounce(query, 500);
 
   const handleChange = (event) => {
@@ -27,8 +28,18 @@ export default function SearchForm(props) {
 
   useEffect(() => {
     const uri = `api/movies?title=${debouncedQuery}`;
-    fetcher(uri)
-      .then(data => setSearchResults(data.Search));
+    const cachedResults = localStorage.getItem(debouncedQuery);
+    
+    if (cachedResults && debouncedQuery) {
+      setSearchResults(JSON.parse(cachedResults));
+    } else {
+      fetcher(uri)
+      .then(data => {
+        setSearchResults(data.Search);
+        localStorage.setItem(debouncedQuery, JSON.stringify(data.Search));
+        setQueryCache({ ...queryCache, debouncedQuery: data.Search });
+      });
+    }
   }, [debouncedQuery]);
 
   return (
