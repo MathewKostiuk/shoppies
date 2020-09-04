@@ -26,11 +26,14 @@ export default function Nomination(props) {
       <ListItemAvatar>
         <Avatar alt={nomination.Title} src={nomination.Poster} />
       </ListItemAvatar>
-      <ListItemText 
+      <ListItemText
         primary={nomination.Title}
       />
       <ListItemSecondaryAction>
-        <IconButton edge='end' aria-label='delete' onClick={handleClick}>
+        <IconButton
+          edge='end'
+          aria-label='delete'
+          onClick={handleClick}>
           <Delete />
         </IconButton>
       </ListItemSecondaryAction>

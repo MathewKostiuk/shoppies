@@ -36,24 +36,24 @@ export default function SearchResult(props) {
           <CardMedia
             className={styles.image}
             image={movie.Poster}
-            title="Contemplative Reptile"
+            title='Contemplative Reptile'
           />
           <CardContent>
-            <Typography gutterBottom variant="h5" component="h2">
+            <Typography gutterBottom variant='h5' component='h2'>
               {movie.Title}
             </Typography>
-            <Typography variant="body2" color="textSecondary" component="p">
+            <Typography variant='body2' color='textSecondary' component='p'>
               {movie.Year}
             </Typography>
           </CardContent>
         </CardActionArea>
         <CardActions>
           <Button
-          size="small"
-          variant="outlined"
-          color="primary"
+          size='small'
+          variant='outlined'
+          color='primary'
           onClick={handleClick}
-          fullWidth="true"
+          fullWidth='true'
           disabled={shouldBeDisabled()}
           >
             Nominate

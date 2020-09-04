@@ -50,7 +50,7 @@ export default function SearchForm(props) {
       onSubmit={handleSubmit}
     >
       <div className={styles.icon}>
-        <Search fontSize="large" />
+        <Search fontSize='large' />
       </div>
 
       <TextField
