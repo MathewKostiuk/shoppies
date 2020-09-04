@@ -2,11 +2,6 @@
   height: 300px;
 }
 
-.disabled {
-  pointer-events: none;
-  opacity: 0.5;
-}
-
 .card {
   height: 100%;
   display: flex;

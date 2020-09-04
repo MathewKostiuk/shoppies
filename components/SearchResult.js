@@ -20,11 +20,7 @@ export default function SearchResult(props) {
   const shouldBeDisabled = () => {
     const exists = nominations.filter(item => item.imdbID === movie.imdbID);
     const limitReached = nominations.length === 5;
-    if (limitReached || exists.length > 0) {
-      return styles.disabled;
-    } else {
-      return '';
-    }
+    return limitReached || exists.length > 0;
   }
 
   return (
@@ -35,7 +31,7 @@ export default function SearchResult(props) {
     lg={3}
     classes={{root: styles.item}}
     >
-      <Card className={`${shouldBeDisabled()} ${styles.card}`} >
+      <Card className={styles.card} >
         <CardActionArea>
           <CardMedia
             className={styles.image}
@@ -52,7 +48,14 @@ export default function SearchResult(props) {
           </CardContent>
         </CardActionArea>
         <CardActions>
-          <Button size="small" variant="outlined" color="primary" onClick={handleClick} fullWidth="true">
+          <Button
+          size="small"
+          variant="outlined"
+          color="primary"
+          onClick={handleClick}
+          fullWidth="true"
+          disabled={shouldBeDisabled()}
+          >
             Nominate
         </Button>
         </CardActions>
