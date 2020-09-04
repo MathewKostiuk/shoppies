@@ -1,9 +1,7 @@
 import Nomination from './Nomination';
 import {
-  List,
   Typography,
   SwipeableDrawer,
-  Drawer,
   Divider,
 } from '@material-ui/core';
 
@@ -14,14 +12,13 @@ export default function NominationsList(props) {
 
   const list = nominations && nominations.length > 0 && nominations.map((nomination, index) => {
     return (
-      <>
+      <React.Fragment key={index}>
         <Nomination
           nomination={nomination}
           setNominations={setNominations}
-          key={index}
         />
         <Divider />
-      </>
+      </React.Fragment>
     );
   });
 

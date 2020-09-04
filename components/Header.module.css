@@ -7,3 +7,7 @@
 .root {
   justify-content: space-between;
 }
+
+.icon {
+  cursor: pointer;
+}

@@ -4,12 +4,20 @@ import { useState, useEffect } from 'react';
 import Header from '../components/Header';
 import SearchResultsList from '../components/SearchResultsList';
 import NominationsList from '../components/NominationsList';
-import Banner from '../components/Banner';
+
+import {
+  Snackbar,
+} from '@material-ui/core';
+
+import {
+  Alert,
+} from '@material-ui/lab'
 
 export default function Home() {
   const [searchResults, setSearchResults] = useState([]);
   const [nominations, setNominations] = useState([]);
   const [drawerOpen, setDrawerOpen] = useState(false);
+  const [showNotification, setShowNotification] = useState(false);
 
   const toggleDrawer = (open) => (event) => {
     if (event && event.type === 'keydown' && (event.key === 'Tab' || event.key === 'Shift')) {
@@ -17,6 +25,14 @@ export default function Home() {
     }
 
     setDrawerOpen(open);
+  }
+
+  const Notification = (props) => {
+    return <Alert elevation={6} variant='filled' {...props} />;
+  }
+
+  const handleClose = () => {
+    setShowNotification(false);
   }
 
   useEffect(() => {
@@ -28,6 +44,9 @@ export default function Home() {
 
   useEffect(() => {
     localStorage.setItem('nomination-list', JSON.stringify(nominations));
+    if (nominations.length === 5) {
+      setShowNotification(true);
+    }
   }, [nominations]);
 
   return (
@@ -36,11 +55,18 @@ export default function Home() {
         <title>The Shoppies</title>
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      {/* <Banner shouldDisplay={nominations.length === 5} /> */}
       <Header
         setSearchResults={setSearchResults}
         toggleDrawer={toggleDrawer}
       />
+      <Snackbar 
+        anchorOrigin={{ vertical: 'top', horizontal: 'center' }}
+        autoHideDuration={5000}
+        open={showNotification}
+        onClose={handleClose}
+      >
+        <Notification onClose={handleClose} severity='success'>Thank you for submitting your movie nominations!</Notification>
+      </Snackbar>
       <main className={styles.root}>
         <SearchResultsList
           results={searchResults}

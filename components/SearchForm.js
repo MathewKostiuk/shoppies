@@ -58,7 +58,7 @@ export default function SearchForm(props) {
           root: styles.input,
         }}
         type='search'
-        fullWidth='true'
+        fullWidth
         value={query}
         onChange={handleChange}
         placeholder='Search by movie title'

@@ -20,7 +20,11 @@ export default function Header(props) {
           Shoppies
         </Typography>
         <SearchForm setSearchResults={setSearchResults} />
-        <ViewList onClick={toggleDrawer(true)} fontSize='large' />
+        <ViewList
+          classes={{ root: styles.icon }}
+          onClick={toggleDrawer(true)}
+          fontSize='large'
+        />
       </Toolbar>
     </AppBar>
   );
