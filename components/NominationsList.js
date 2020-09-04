@@ -2,39 +2,47 @@ import Nomination from './Nomination';
 import {
   List,
   Typography,
+  SwipeableDrawer,
   Drawer,
   Divider,
 } from '@material-ui/core';
+
 import styles from './NominationsList.module.css';
 
 export default function NominationsList(props) {
-  const { nominations, setNominations } = props;
+  const { nominations, setNominations, drawerOpen, toggleDrawer } = props;
 
   const list = nominations && nominations.length > 0 && nominations.map((nomination, index) => {
-    return <Nomination
-      nomination={nomination}
-      setNominations={setNominations}
-      key={index}
-    />
-  })
+    return (
+      <>
+        <Nomination
+          nomination={nomination}
+          setNominations={setNominations}
+          key={index}
+        />
+        <Divider />
+      </>
+    );
+  });
 
   return (
-    <Drawer
-      variant='permanent'
+    <SwipeableDrawer
       anchor='right'
-      classes={{
-        paper: styles.drawer,
-      }}
+      open={drawerOpen}
+      onOpen={toggleDrawer(true)}
+      onClose={toggleDrawer(false)}
+      classes={{ paper: styles.drawer }}
     >
+      <div className={styles.title}>
+        <Typography
+          variant='h4'
+          align='center'
+        >
+          Nominations
+        </Typography>
+      </div>
       <Divider />
-      <Typography
-      variant='h4'
-      align='center'>
-        Nominations
-      </Typography>
-      <List>
-        {list}
-      </List>
-    </Drawer>
+      {list}
+    </SwipeableDrawer>
   );
 }

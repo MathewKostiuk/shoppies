@@ -6,16 +6,21 @@ import {
   Typography,
 } from '@material-ui/core'
 
+import {
+  ViewList,
+} from '@material-ui/icons';
+
 export default function Header(props) {
-  const { setSearchResults } = props;
+  const { setSearchResults, toggleDrawer } = props;
 
   return (
     <AppBar position="fixed">
-      <Toolbar>
+      <Toolbar classes={{ root: styles.root }}>
         <Typography className={styles.title} variant='h4'>
           Shoppies
         </Typography>
         <SearchForm setSearchResults={setSearchResults} />
+        <ViewList onClick={toggleDrawer(true)} fontSize='large' />
       </Toolbar>
     </AppBar>
   );

@@ -50,8 +50,7 @@ export default function SearchForm(props) {
       onSubmit={handleSubmit}
     >
       <div className={styles.icon}>
-        <Search
-          fontSize="large" />
+        <Search fontSize="large" />
       </div>
 
       <TextField
@@ -59,6 +58,7 @@ export default function SearchForm(props) {
           root: styles.input,
         }}
         type='search'
+        fullWidth='true'
         value={query}
         onChange={handleChange}
         placeholder='Search by movie title'

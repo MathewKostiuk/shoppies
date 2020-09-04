@@ -18,11 +18,11 @@ export default function SearchResultsList(props) {
 
   return (
     <Grid container
-    className={styles.grid}
-    spacing={3}
-    classes={{
-      container: styles.container,
-    }}
+      className={styles.grid}
+      spacing={1}
+      classes={{
+        container: styles.container,
+      }}
     >
       {list}
     </Grid>

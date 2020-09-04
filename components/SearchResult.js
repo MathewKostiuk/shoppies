@@ -28,7 +28,13 @@ export default function SearchResult(props) {
   }
 
   return (
-    <Grid item xs={6} lg={3}>
+    <Grid
+    item
+    xs={6}
+    sm={4}
+    lg={3}
+    classes={{root: styles.item}}
+    >
       <Card className={`${shouldBeDisabled()} ${styles.card}`} >
         <CardActionArea>
           <CardMedia

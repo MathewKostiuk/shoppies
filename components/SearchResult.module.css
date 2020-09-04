@@ -13,3 +13,10 @@
   flex-direction: column;
   justify-content: space-between;
 }
+
+@media(min-width: 960px) {
+  .item {
+    max-width: 20% !important;
+    flex-basis: 20% !important;
+  }
+}

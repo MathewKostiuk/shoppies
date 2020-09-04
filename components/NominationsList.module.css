@@ -1,4 +1,10 @@
 .drawer {
   width: 300px;
-  margin-top: 64px;
+}
+
+.title {
+  min-height: 64px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
 }

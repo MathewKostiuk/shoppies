@@ -1,9 +1,9 @@
-.title {
-  flex-grow: 1;
-}
-
 @media(max-width: 720px) {
   .title {
     display: none;
   }
+}
+
+.root {
+  justify-content: space-between;
 }

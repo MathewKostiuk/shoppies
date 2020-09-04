@@ -1,4 +1,6 @@
 .root {
   margin-top: 64px;
-  margin-right: 300px;
+  background-image: url('../public/7825.jpg');
+  background-size: cover;
+  background-repeat: no-repeat;
 }

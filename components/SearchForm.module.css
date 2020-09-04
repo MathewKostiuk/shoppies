@@ -1,5 +1,6 @@
 .root {
   position: relative;
+  display: inline-block;
 }
 
 @media(max-width: 720px) {
