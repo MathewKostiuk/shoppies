@@ -58,6 +58,7 @@ export default function Home() {
       <Header
         setSearchResults={setSearchResults}
         toggleDrawer={toggleDrawer}
+        nominations={nominations}
       />
       <Snackbar 
         anchorOrigin={{ vertical: 'top', horizontal: 'center' }}
