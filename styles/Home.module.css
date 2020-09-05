@@ -4,3 +4,10 @@
   background-size: cover;
   background-repeat: no-repeat;
 }
+
+@media(max-width: 960px) {
+  .root {
+    background-size: auto;
+    background-position: 55% 75%;
+  }
+}
